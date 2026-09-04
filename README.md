@@ -11,16 +11,12 @@ A local Retrieval-Augmented Generation (RAG) assistant leveraging Llama 3.1 via 
 
 ## Architecture
 
-+------------------+      +-------------------+      +-------------------+
-|  User Query /    | ---> | RAG Vector Store  | ---> |   Ollama Engine   |
-| System Prompt    |      |    (ChromaDB)     |      |  (Llama 3.1:8b)   |
-+------------------+      +-------------------+      +-------------------+
-|                                                    |
-v                                                    v
-+------------------+                                 +-------------------+
-|   Tool Calling   | -------------------------------> | Validated JSON    |
-|   (Python Exec)  |                                 | Response (Schema) |
-+------------------+                                 +-------------------+
+flowchart TD
+    A[User Query / System Prompt] --> B[RAG Vector Store<br/>ChromaDB]
+    B --> C[Ollama Engine<br/>Llama 3.1:8b]
+    A --> D[Tool Calling<br/>Python Exec]
+    C --> E[Validated JSON Response<br/>Schema]
+    D --> E
 
 ## How to Run locally
 
