@@ -11,40 +11,22 @@ A local Retrieval-Augmented Generation (RAG) assistant leveraging Llama 3.1 via 
 
 ## 🏗️ Architecture & System Design
 
-+-----------------------------------------------------------------------------------+
-|                                 USER INPUT QUERY                                  |
-|                  ("What vector database is used in this system?")                 |
-+-----------------------------------------------------------------------------------+
-|
-v
-+-----------------------------------------------------------------------------------+
-|                            PROMPT & CONTEXT HANDLING                              |
-|           (Ingestion via Document Loader & Recursive Chunking Engine)             |
-+-----------------------------------------------------------------------------------+
-|
-+----------------------+----------------------+
-|                                             |
-v                                             v
-+------------------------------------+        +------------------------------------+
-|            RAG PIPELINE            |        |           TOOL CALLING             |
-|  - Text Ingestion & Chunking       |        |  - Dynamic Python Functions        |
-|  - ChromaDB Vector Store           |        |  - System Uptime Calculators       |
-|  - Ollama Dense Embeddings         |        |  - Tool Binding Engine             |
-+------------------------------------+        +------------------------------------+
-|                                             |
-+----------------------+----------------------+
-|
-v
-+-----------------------------------------------------------------------------------+
-|                                LOCAL LLM INFERENCE                                |
-|                         Llama 3.1:8b (Served via Ollama)                          |
-+-----------------------------------------------------------------------------------+
-|
-v
-+-----------------------------------------------------------------------------------+
-|                              STRUCTURED OUTPUT LAYER                              |
-|                   Pydantic Schema Validation (Strict JSON Format)                 |
-+-----------------------------------------------------------------------------------+
+```
+[ User Query ]
+      │
+      ▼
+[ Context & Ingestion Engine ] ──► ( Recursive Chunking )
+      │
+      ├──► [ RAG Pipeline ] ─────► ( ChromaDB Vector Store )
+      │
+      └──► [ Tool Calling ] ─────► ( Dynamic Python Functions )
+      │
+      ▼
+[ Local LLM Engine ] ────────────► ( Llama 3.1:8b via Ollama )
+      │
+      ▼
+[ Output Layer ] ────────────────► ( Pydantic JSON Validation )
+```
 
 ## How to Run locally
 
