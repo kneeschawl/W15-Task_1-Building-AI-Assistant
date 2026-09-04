@@ -29,5 +29,5 @@ v                                                    v
    ollama serve
 
 2. Run the application:
-    
+   ```bash
    python app.py
