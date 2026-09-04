@@ -1,0 +1,15 @@
+# Virtual Environment
+.venv/
+env/
+venv/
+
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+
+# RAG Vector Store Persistence (ChromaDB)
+chroma_db/
+*.sqlite3
+
+# Environment Variables & Secrets
+.env
